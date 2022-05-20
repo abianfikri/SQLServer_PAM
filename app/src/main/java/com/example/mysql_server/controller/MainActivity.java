@@ -1,4 +1,4 @@
-package com.example.mysql_server;
+package com.example.mysql_server.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.mysql_server.R;
 import com.example.mysql_server.adapter.TemanAdapter;
 import com.example.mysql_server.model.Teman;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void  bacaData(){
+        temanArrayList.clear();
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         JsonArrayRequest jArr = new JsonArrayRequest(url_select, new Response.Listener<JSONArray>() {
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                adapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
             @Override
