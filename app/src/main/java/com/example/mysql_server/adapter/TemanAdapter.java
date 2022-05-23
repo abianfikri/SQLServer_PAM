@@ -67,6 +67,8 @@ public class TemanAdapter extends RecyclerView.Adapter<TemanAdapter.TemanViewHol
         holder.telponTxt.setText(tlp);
 
         holder.cardku.setOnLongClickListener(new View.OnLongClickListener() {
+
+//            Bagian Edit dan Hapus
             @Override
             public boolean onLongClick(View view) {
                 PopupMenu pm = new PopupMenu(view.getContext(), view);
@@ -78,6 +80,7 @@ public class TemanAdapter extends RecyclerView.Adapter<TemanAdapter.TemanViewHol
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId())
                         {
+//                            Edit Data
                             case R.id.edit:
                                 Bundle bundle = new Bundle();
 
@@ -123,13 +126,14 @@ public class TemanAdapter extends RecyclerView.Adapter<TemanAdapter.TemanViewHol
         });
     }
 
+//    Database Hapus Data
     public void HapusData(final String idx){
-        String url_update = "http://10.0.2.2:8081/PAM/deletetm.php";
+        String url_delete = "https://20200140130.praktikumtiumy.com/deletetm.php";
         final String TAG = MainActivity.class.getSimpleName();
         final String TAG_SUCCES = "success";
         final int[] sukses = new int[1];
 
-        StringRequest stringReq = new StringRequest(Request.Method.POST, url_update, new Response.Listener<String>() {
+        StringRequest stringReq = new StringRequest(Request.Method.POST, url_delete, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "Respon : " + response.toString());
